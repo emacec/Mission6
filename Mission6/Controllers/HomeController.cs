@@ -28,8 +28,12 @@ namespace Mission6.Controllers
         [HttpPost]
         public IActionResult FilmForm(Application response)
         {
-            _context.Applications.Add(response); // add record to the database
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _context.Movies.Add(response); // add record to the database
+                _context.SaveChanges();
+            }
+            
 
             return View("Confirmation", response);
 
