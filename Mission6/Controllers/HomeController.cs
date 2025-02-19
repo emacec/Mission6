@@ -1,11 +1,18 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Mission6.Models;
+using SQLitePCL;
 
 namespace Mission6.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationContext _context;
+    
+        public HomeController(ApplicationContext temp) //Constructor
+        {
+            _context = temp;
+        }
         
         public IActionResult Index()
         {
@@ -15,14 +22,14 @@ namespace Mission6.Controllers
         [HttpGet]
         public IActionResult FilmForm()
         {
-            return View();
+            return View("FilmForm");
         }
 
         [HttpPost]
         public IActionResult FilmForm(Application response)
         {
-            //_context.Applications.Add(response); // add record to the database
-            //_context.SaveChanges();
+            _context.Application.Add(response); // add record to the database
+            _context.SaveChanges();
 
             return View("Confirmation", response);
 
