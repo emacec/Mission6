@@ -4,6 +4,11 @@
 
 
 <form method="post">
+
+    @* <label asp-for="ApplicationID"></label> *@
+    <input type="hidden" asp-for="ApplicationID"/>
+    <br />
+
     <label asp-for="Category">Category:</label>
     <input asp-for="Category" />
     <br />
