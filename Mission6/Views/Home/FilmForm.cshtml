@@ -6,7 +6,7 @@
 <form method="post">
 
     @* <label asp-for="ApplicationID"></label> *@
-    <input type="hidden" asp-for="ApplicationID"/>
+    <input type="hidden" asp-for="MovieId"/>
     <br />
 
     <label asp-for="Category">Category:</label>
@@ -18,23 +18,32 @@
     <label asp-for="Year">Year:</label>
     <input asp-for="Year" />
     <br />
+
     <label asp-for="Director">Director:</label>
     <input asp-for="Director" />
     <br />
     <label asp-for="Rating">Rating:</label>
     <input asp-for="Rating" />
     <br />
-    <label asp-for="LentTo">LentTo:</label>
-    <input asp-for="LentTo" />
-    <br />
-    <label asp-for="Notes">Notes:</label>
-    <input asp-for="Notes" />
-    <br />
     <label asp-for="Edited">Edited</label>
     <select asp-for="Edited">
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
+    <br />
+    <label asp-for="LentTo">LentTo:</label>
+    <input asp-for="LentTo" />
+    <br />
+    <label asp-for="CopiedToPlex">CopiedToPlex:</label>
+    <select asp-for="CopiedToPlex">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+
+    <br />
+    <label asp-for="Notes">Notes:</label>
+    <input asp-for="Notes" />
+    
     <br />
    
 

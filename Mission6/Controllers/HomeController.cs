@@ -57,7 +57,7 @@ namespace Mission6.Controllers
         public IActionResult Edit(int id)
         {
             var recordToEdit = _context.Movies
-                .Single(x => x.ApplicationID == id);
+                .Single(x => x.MovieId == id);
 
             return View("FilmForm", recordToEdit);
         }
@@ -76,7 +76,7 @@ namespace Mission6.Controllers
         public IActionResult Delete(int id)
         {
             var recordToDelete = _context.Movies
-                .Single(x => x.ApplicationID == id);
+                .Single(x => x.MovieId == id);
             return View(recordToDelete);
         }
 
@@ -88,7 +88,22 @@ namespace Mission6.Controllers
 
             return RedirectToAction("List");
 
+
         }
+
+        [HttpPost]
+        public IActionResult Create(Application movie)
+        {
+            if (ModelState.IsValid)  // Ensures all required fields are filled
+            {
+                _context.Movies.Add(movie);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(movie);  // If invalid, return to the form with errors
+        }
+
 
     }
 }
